@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Google Drive Slideshow</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		var imageLinks = [
+			"https://drive.google.com/uc?id=1yDqRmzYrSUxy2ZxWmMf_CsVz7ZQO4sTv",
+			"https://drive.google.com/uc?id=1kGDUhdyVKNdVuk8dAtcYlify5tx5iDVv",
+			"https://drive.google.com/uc?id=1B7PCgtQ1o7hkSnFNCvouZVypZaCRV2HB",
+			"https://drive.google.com/uc?id=1Ba7gj2S8-mxmMgAf1DH6pir4Hdu52gj7",
+			"https://drive.google.com/uc?id=1BBm3b-nGn7fmxBQHHk3y_chdSKuAG_wU",
+			"https://drive.google.com/uc?id=1mgeBGc1oSJQ2ZT9-APE8x8sTFAhTexYi",
+			"https://drive.google.com/uc?id=1sfJ9_OF8LgitKovgRSKDqt0wqgFParPs",
+			"https://drive.google.com/uc?id=1x96C8HqLBMeRuLYdKtiG0L898-xKs5gF",
+			"https://drive.google.com/uc?id=146_f-Em_3ZqCQS1K9eU0mwIY_S0qlisv",
+			"https://drive.google.com/uc?id=1qUMONcP09Yx6aChJC-ES5FqvyKaIivFy",
+			"https://drive.google.com/uc?id=1QqPs0IknQKD4eOciU-9-yHBMYJIjek6H"
+		];
+		var currentIndex = 0;
+
+		function showImage(index) {
+			$("#slideshow").attr("src", imageLinks[index]);
+			$(".dot").removeClass("active");
+			$(".dot:eq("+index+")").addClass("active");
+			currentIndex = index;
+		}
+
+		function nextImage() {
+			if (currentIndex == imageLinks.length - 1) {
+				showImage(0);
+			} else {
+				showImage(currentIndex + 1);
+			}
+		}
+
+		function prevImage() {
+			if (currentIndex == 0) {
+				showImage(imageLinks.length - 1);
+			} else {
+				showImage(currentIndex - 1);
+			}
+		}
+
+		
+	</script>
+	<style>
+		#slideshow {
+			width: 50%;
+			height: 2500px;
+			cursor: pointer;
+			display: block;
+			margin: 0 auto;
+		}
+
+		.dots {
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		.dot {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background-color: #bbb;
+			margin: 0 5px;
+			cursor: pointer;
+		}
+
+		.dot.active {
+			background-color: #555;
+		}
+	</style>
+</head>
+<body>
+	<img id="slideshow" src="https://drive.google.com/uc?id=1yDqRmzYrSUxy2ZxWmMf_CsVz7ZQO4sTv">
+	<div class="dots">
+		<span class="dot active" onclick="showImage(0)"></span>
+		<span class="dot" onclick="showImage(1)"></span>
+		<span class="dot" onclick="showImage(2)"></span>
+		<span class="dot" onclick="showImage(3)"></span>
+		<span class="dot" onclick="showImage(4)"></span>
+		<span class="dot" onclick="showImage(5)"></span>
+		<span class="dot" onclick="showImage(6)"></span>
+		<span class="dot" onclick="showImage(7)"></span>
+		<span class="dot" onclick="showImage(8)"></span>
+		<span class="dot" onclick="showImage(9)"></span>
+		<span class="dot" onclick="showImage(10)"></span>
+		<span class="dot" onclick="showImage(11)"></span>
+	</div>
+	<script>
+		$(document).ready(function() {
+			$("#slideshow").click(function() {
+        nextImage();
+			});
+		});
+	</script>
+</body>
+</html>
